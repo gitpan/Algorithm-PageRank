@@ -82,7 +82,6 @@ I32 _multiply(vsize, m, v, t, dbprefix)
   bool is_identical;
   char filename[512];
   double norm;
-  double tmp[] = { 0.025, 0.1, 0.325, 0.2, 0.35 };
   vptr = INT2PTR(vector*, v);
 
   // temp pagerank vector
@@ -101,7 +100,6 @@ I32 _multiply(vsize, m, v, t, dbprefix)
 
   for(j=0; j<vsize; j++){
    vptr[j] = (double)(1/(double)vsize);
-   vptr[j] = tmp[j];
   }
 
   // has t iterations
