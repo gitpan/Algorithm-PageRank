@@ -15,3 +15,7 @@ Revision history for Perl extension Algorithm::PageRank.
 
 0.06  Sun, 22 Aug 2004 17:34:49 +0800
 	- remove some stupid reshaping code.
+
+0.07  Mon, 23 Aug 2004 04:00:19 +0800
+	- added checking if out degree is zero
+	- added test for weakly connected graph

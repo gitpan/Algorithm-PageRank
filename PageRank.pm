@@ -2,7 +2,7 @@ package Algorithm::PageRank;
 $|++;
 use strict;
 #use warnings;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use fields qw(graph prvect size);
 
@@ -35,14 +35,18 @@ sub graph {
     }
 
     foreach my $i (0..$self->{size}-1){
-	$self->{graph}->slice(join q/:/, $i, $i) 
-	    /= sum $self->{graph}->slice(join q/:/, $i, $i); 
+	my $outdeg_sum = sum $self->{graph}->slice(join q/:/, $i, $i); 
+	if($outdeg_sum){
+	    $self->{graph}->slice(join q/:/, $i, $i) /=
+		$outdeg_sum;
+	}
     }
 
     $self->{graph} = transpose $self->{graph};
     $self->{prvect} = ones($size) / $size;    # the initial pagerank
 #    print $self->{graph}->slice(":");
 #    print sdump $self;
+#    print $self->{prvect}->slice(":");
 }
 
 sub iterate {
@@ -54,7 +58,8 @@ sub iterate {
 	      $self->{prvect} x $self->{graph};
       +
 	  ($d_factor/$self->{size}) * $self->{prvect};
-#      print sdump $self->{prvect};
+#      print $self->{prvect}->slice(":");
+#      print sdump (($d_factor/$self->{size}) * $self->{prvect});
     }
 }
 

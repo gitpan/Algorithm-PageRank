@@ -4,4 +4,5 @@ MANIFEST
 PageRank.pm
 INSTALL
 t/pr.t
+t/pr2.t
 META.yml                                 Module meta-data (added by MakeMaker)
