@@ -19,3 +19,6 @@ Revision history for Perl extension Algorithm::PageRank.
 0.07  Mon, 23 Aug 2004 04:00:19 +0800
 	- added checking if out degree is zero
 	- added test for weakly connected graph
+
+0.08  Mon, 23 Aug 2004 14:03:55 +0800
+	- bug fix in Pagerank.pm for forgetting to add dampening effect. XD

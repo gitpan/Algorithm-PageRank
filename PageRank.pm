@@ -1,8 +1,8 @@
 package Algorithm::PageRank;
 $|++;
 use strict;
-#use warnings;
-our $VERSION = '0.07';
+use warnings;
+our $VERSION = '0.08';
 
 use fields qw(graph prvect size);
 
@@ -52,12 +52,13 @@ sub graph {
 sub iterate {
     my $self = shift;
     my $iter = shift || 100;
+    my $normal_factor = $d_factor/$self->{size};
+    my $inv_d_factor = 1 - $d_factor;
+#    print $self->{prvect}->slice(":");
+#    print $self->{graph}->slice(":");
     foreach (1..$iter){
-      $self->{prvect} = 
-	  (1 - $d_factor) *
-	      $self->{prvect} x $self->{graph};
-      +
-	  ($d_factor/$self->{size}) * $self->{prvect};
+      $self->{prvect} =
+	$inv_d_factor * $self->{prvect} x $self->{graph} + $normal_factor * $self->{prvect};
 #      print $self->{prvect}->slice(":");
 #      print sdump (($d_factor/$self->{size}) * $self->{prvect});
     }
