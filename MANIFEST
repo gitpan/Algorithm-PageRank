@@ -2,6 +2,6 @@ Changes
 Makefile.PL
 MANIFEST
 PageRank.pm
-PageRank.xs
 INSTALL
 t/pr.t
+META.yml                                 Module meta-data (added by MakeMaker)

@@ -4,14 +4,11 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'		=> 'Algorithm::PageRank',
     'VERSION_FROM'	=> 'PageRank.pm', 
-    'PREREQ_PM'		=> {}, 
+    'PREREQ_PM'		=> {
+	'PDL' => '2.4',
+    }, 
     ($] >= 5.005 ?    
       (ABSTRACT_FROM => 'PageRank.pm', 
-       AUTHOR     => 'xern <xern@cpan.org>') : ()),
-    'LIBS'		=> ['-lz'], 
-    'DEFINE'		=> '', 
-	
-    'INC'		=> '', 
-	
+       AUTHOR     => 'Yung-chung Lin <xern@cpan.org>') : ()),
     
 );

@@ -1,35 +1,41 @@
-use Test;
-BEGIN { plan tests => 3 };
-ok(1);
+use Test::More qw(no_plan);
+use ExtUtils::testlib;
 
 use Algorithm::PageRank;
-
-
-$pr = new Algorithm::PageRank(
-			      dbprefix => 't/db.tmp',
-			      num_vertex => 5,
-			      );
+$pr = new Algorithm::PageRank;
+$Algorithm::PageRank::d_factor = 0;
 
 $pr->graph([
-	    qw/
-	    0 2
-	    1 0
-	    1 2
-	    1 3
-	    1 4
-	    2 4
-	    3 1
-	    3 2
-	    4 2
-	    4 3
-	    /
-	     ]);
+	qw(
+	0 1
+	0 2
+	0 3
+	0 4
+	0 6
 
-$pr->iterate(1000);
+	1 0
 
+	2 0
+	2 1
 
-ok( $pr->pagerank(2), 0.321183459725857101);
-@ret = $pr->pagerank();
-ok( $ret[3], 0.194100711964219047);
+	3 1
+	3 2
+	3 4
 
-unlink $_ for qw,t/db.tmp  t/db.tmp.idx  t/db.tmp.inv  t/db.tmp.outdeg  t/db.tmp.pr,;
+	4 0
+	4 2
+	4 3
+	4 5
+
+	5 0
+	5 4
+
+	6 4
+	)
+	]);
+
+$pr->iterate(100);
+
+$pr->result();
+
+ok(1);
