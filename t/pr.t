@@ -2,6 +2,8 @@ use Test::More qw(no_plan);
 use ExtUtils::testlib;
 
 use Algorithm::PageRank;
+ok(1);
+
 $pr = new Algorithm::PageRank;
 $Algorithm::PageRank::d_factor = 0;
 
@@ -36,17 +38,18 @@ $pr->graph([
 
 $pr->iterate(100);
 
-@r = $pr->result()->list;
-@a = qw(
-	0.303514376996805
-	0.166134185303515
-	0.140575079872205
-	0.105431309904153
-	0.178913738019169
-	);
 
+@r = $pr->result()->list;
+@a = (
+      '0.303514376996805',
+      '0.166134185303515',
+      '0.140575079872205',
+      '0.105431309904153',
+      '0.178913738019169',
+      '0.0447284345047924',
+      '0.0607028753993611'
+      );
 foreach (0..$#r){
     ok(abs($r[$_] - $a[$_]) < 0.000001);
 }
 
-ok(1);

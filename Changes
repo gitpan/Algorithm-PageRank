@@ -9,3 +9,6 @@ Revision history for Perl extension Algorithm::PageRank.
 
 0.04  Sun, 22 Aug 2004 17:12:10 +0800
 	- update in test file
+
+0.05
+	- bug fix in PageRank.pm and in test
