@@ -1,0 +1,6 @@
+Revision history for Perl extension Algorithm::PageRank.
+
+0.01  Mon Jun  9 17:27:50 2003
+	- original version; created by h2xs 1.21 with options
+		-A Algorithm::PageRank
+
