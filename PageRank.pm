@@ -2,7 +2,7 @@ package Algorithm::PageRank;
 $|++;
 use strict;
 #use warnings;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use fields qw(graph prvect size);
 
@@ -61,7 +61,7 @@ sub iterate {
 
 sub result {
     my $self = shift;
-    $self->{prvect}->reshape(1,$self->{size});
+    $self->{prvect};
 }
 
 1;
